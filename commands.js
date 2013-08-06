@@ -33,13 +33,13 @@ module.exports = [
         name: 'Bandwidth In',
         command: '/sbin/ifconfig "eth0" | grep "RX bytes" | cut -d: -f2 | awk \'{ print $1 }\'',
         deviceId: 533,
-        data: [parseInt, changePerSecond, bytesToKilobytes]
+        data: [parseInt, changePerSecond(), bytesToKilobytes]
     },
     {
         name: 'Bandwidth Out',
         command: '/sbin/ifconfig "eth0" | grep "TX bytes" | cut -d: -f2 | awk \'{ print $1 }\'',
         deviceId: 543,
-        data: [parseInt, changePerSecond, bytesToKilobytes]
+        data: [parseInt, changePerSecond(), bytesToKilobytes]
     }
 ];
 
