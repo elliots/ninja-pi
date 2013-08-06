@@ -23,6 +23,7 @@ Driver.prototype.createCommandDevice = function(cmd) {
 };
 
 function Device(app, config) {
+  app.log.debug('Creating Pi Device : ' + config.name);
   var self = this;
 
   this._app = app;
@@ -39,13 +40,13 @@ function Device(app, config) {
 }
 
 Device.prototype.write = Device.prototype.read = function() {
-  this._app.log.info('Pi Driver : Executing : ' + this.config.command);
+  this._app.log.debug('Pi Driver : Executing : ' + this.config.command);
 
   exec(this.config.command, function(error, stdout, stderr) {
     setTimeout(this.read.bind(this), this.config.interval || 30000);
 
     if (error || stderr) {
-      this._app.log.info('Pi Driver : ' + this.name + ' failed! - ' + error||stderr);
+      this._app.log.warning('Pi Driver : ' + this.name + ' failed! - ' + error||stderr);
       return;
     }
 
@@ -59,12 +60,15 @@ Device.prototype.write = Device.prototype.read = function() {
     }
 
     (this.config.data || []).forEach(function(fn) {
+
+      var x = result;
       try {
         result = fn(result);
       } catch(e) {
         result = undefined;
       }
-    });
+      console.log(this.name + ' DATA ' + x + '>' + result);
+    }.bind(this));
 
     if (result !== undefined && !isNaN(result)) {
       this.emit('data', result);
