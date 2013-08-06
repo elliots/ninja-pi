@@ -67,7 +67,7 @@ Device.prototype.write = Device.prototype.read = function() {
       } catch(e) {
         result = undefined;
       }
-      console.log(this.name + ' DATA ' + x + '>' + result);
+      //console.log(this.name + ' DATA ' + x + '>' + result);
     }.bind(this));
 
     if (result !== undefined && !isNaN(result)) {
