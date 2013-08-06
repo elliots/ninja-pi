@@ -2,7 +2,7 @@ var util = require('util');
 var stream = require('stream');
 var exec = require('child_process').exec;
 
-var commands = require('commands');
+var commands = require('./commands');
 
 util.inherits(Driver,stream);
 util.inherits(Device,stream);
