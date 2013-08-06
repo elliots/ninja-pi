@@ -30,7 +30,7 @@ d.on('register', function(value) {
     var device = value;
 
     device.on('data', function(data) {
-        console.log('Device emitted data - ' + data);
+        console.log('Device "' + device.name + '" emitted data - ' + data);
     });
 
     setTimeout(function() {
