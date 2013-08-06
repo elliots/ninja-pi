@@ -40,16 +40,19 @@ function Device(app, config) {
 
 Device.prototype.write = Device.prototype.read = function() {
   this._app.log.info('Pi Driver : Executing : ' + this.config.command);
+
   exec(this.config.command, function(error, stdout, stderr) {
-    console.log(error, stderr);
+    if (error || stderr) {
+      this._app.log.info('Pi Driver : ' + this.name + ' failed! - ' + error||stderr);
+      return;
+    }
+
     var result = (stdout+'');
 
-    console.log('result : ', result);
     if (this.config.regex) {
       result = result.match(this.config.regex);
       if (result && result.length) {
         result = result.pop();
-        console.log('result from regex', this.config.regex, result);
       }
     }
 
