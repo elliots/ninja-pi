@@ -62,5 +62,5 @@ function changePerSecond() {
 }
 
 function bytesToKilobytes(val) {
-    return val / 1000;
+    return val / 1024;
 }
