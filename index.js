@@ -35,13 +35,15 @@ function Device(app, config) {
   this.G = 'pi' + (config.name).replace(/[^a-zA-Z0-9]/g, '');
   this.name = 'Pi - ' + config.name;
 
-  setTimeout(this.read.bind(this), config.interval || 60000);
+  this.read();
 }
 
 Device.prototype.write = Device.prototype.read = function() {
   this._app.log.info('Pi Driver : Executing : ' + this.config.command);
 
   exec(this.config.command, function(error, stdout, stderr) {
+    setTimeout(this.read.bind(this), this.config.interval || 30000);
+
     if (error || stderr) {
       this._app.log.info('Pi Driver : ' + this.name + ' failed! - ' + error||stderr);
       return;
