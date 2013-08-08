@@ -1,0 +1,21 @@
+{
+  "name": "ninja-pi",
+  "version": "0.0.0",
+  "description": "Ninja Blocks driver for the Raspberry Pi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:elliots/ninja-pi.git"
+  },
+  "keywords": [
+    "RaspberryPi",
+    "Ninja",
+    "Blocks"
+  ],
+  "author": "Elliot Shepherd",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
