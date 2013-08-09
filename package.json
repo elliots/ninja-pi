@@ -1,7 +1,7 @@
 {
   "name": "ninja-pi",
-  "version": "0.0.0",
-  "description": "Ninja Blocks driver for the Raspberry Pi",
+  "version": "0.0.1",
+  "description": "NinjaBlocks driver for the sensors on RaspberryPi (rPi, Linux) ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
