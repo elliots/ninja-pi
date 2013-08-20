@@ -11,7 +11,7 @@ function Driver(opts,app) {
 
   this._app = app;
 
-  app.on('client::up',function(){
+  app.once('client::up',function(){
     commands.forEach(this.createCommandDevice.bind(this));
   }.bind(this));
 
@@ -27,11 +27,11 @@ function Device(app, config) {
   var self = this;
 
   this._app = app;
-  this.config = config
+  this.config = config;
 
   this.writeable = true;
   this.readable = true;
-  this.V = config.vendorId;
+  this.V = config.vendorId || 0;
   this.D = config.deviceId;
   this.G = 'pi' + (config.name).replace(/[^a-zA-Z0-9]/g, '');
   this.name = 'Pi - ' + config.name;
@@ -46,7 +46,7 @@ Device.prototype.write = Device.prototype.read = function() {
     setTimeout(this.read.bind(this), this.config.interval || 30000);
 
     if (error || stderr) {
-      this._app.log.warning('Pi Driver : ' + this.name + ' failed! - ' + error||stderr);
+      this._app.log.warn('Pi Driver : ' + this.name + ' failed! - ' + error||stderr);
       return;
     }
 

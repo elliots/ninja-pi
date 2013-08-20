@@ -1,6 +1,6 @@
 {
   "name": "ninja-pi",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Ninja Blocks driver for the Raspberry Pi",
   "main": "index.js",
   "scripts": {
