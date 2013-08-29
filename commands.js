@@ -37,7 +37,7 @@ module.exports = [
     },
     {
         name: 'Bandwidth Out',
-        command: '/sbin/ifconfig "eth0" | grep "TX bytes" | cut -d: -f2 | awk \'{ print $1 }\'',
+        command: '/sbin/ifconfig "eth0" | grep "TX bytes" | cut -d: -f3 | awk \'{ print $1 }\'',
         deviceId: 543,
         data: [parseInt, changePerSecond(), bytesToKilobytes]
     }
