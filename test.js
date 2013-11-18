@@ -1,4 +1,3 @@
-
 var opts = {};
 
 var d = new (require('./index'))(opts, {
@@ -38,8 +37,3 @@ d.on('register', function(value) {
     }, 1000);
 
 });
-
-d.save = function() {
-    console.log('Saved opts', opts);
-};
-
